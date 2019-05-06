@@ -1,0 +1,22 @@
+apply plugin: 'kotlin'
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+
+    api project (':domain')
+
+    implementation dataDependencies.javaxAnnotation
+    implementation dataDependencies.javaxInject
+    implementation dataDependencies.kotlin
+    implementation dataDependencies.rxKotlin
+
+    testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.mockK
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
