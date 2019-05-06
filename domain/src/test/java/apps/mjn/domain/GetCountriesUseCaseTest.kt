@@ -19,7 +19,7 @@ class GetCountriesUseCaseTest {
     private val repository: CountriesRepository = mockk()
     private val useCaseExecutor: UseCaseExecutor = mockk(relaxed = true)
     private val postExecutionThread: PostExecutionThread = mockk(relaxed = true)
-    private val usecase: GetCountriesUseCase =
+    private val useCase: GetCountriesUseCase =
         GetCountriesUseCase(repository, useCaseExecutor, postExecutionThread)
     private val params = GetCountriesUseCase.Params()
 
@@ -28,14 +28,34 @@ class GetCountriesUseCaseTest {
         clearAllMocks()
     }
 
+    private fun mockGetListResponse(list: List<Country> = CountryGenerator.randomCountries(dataSize)) {
+        every { repository.getCountries() } returns Single.just(list)
+    }
+
     @Test
     fun `getCountries() is called`() {
         mockGetListResponse()
-        usecase.execute(params, {}, {})
+        useCase.execute(params, {}, {})
         verify(exactly = 1) { repository.getCountries() }
     }
 
-    private fun mockGetListResponse(list: List<Country> = CountryGenerator.randomCountries(dataSize)) {
-        every { repository.getCountries() } returns Single.just(list)
+    @Test
+    fun `getCountries() received valid parameters`() {
+        mockGetListResponse()
+        useCase.execute(params, {}, {})
+        verify { repository.getCountries() }
+    }
+
+    @Test
+    fun `getCountries() completed`() {
+        mockGetListResponse()
+        useCase.buildSingle(params).test().assertComplete()
+    }
+
+    @Test
+    fun `getCountries() sent back results`() {
+        val list = CountryGenerator.randomCountries(dataSize)
+        mockGetListResponse(list)
+        useCase.buildSingle(params).test().assertValue(list)
     }
 }
