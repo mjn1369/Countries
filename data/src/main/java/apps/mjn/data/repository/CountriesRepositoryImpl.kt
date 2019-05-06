@@ -1,8 +1,8 @@
-package com.example.data.repository
+package apps.mjn.data.repository
 
 import apps.mjn.domain.entity.Country
 import apps.mjn.domain.repository.CountriesRepository
-import com.example.data.datasource.CountriesRemoteDataSource
+import apps.mjn.data.datasource.CountriesRemoteDataSource
 import io.reactivex.Single
 import javax.inject.Inject
 

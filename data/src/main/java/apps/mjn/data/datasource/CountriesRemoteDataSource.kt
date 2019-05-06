@@ -1,4 +1,4 @@
-package com.example.data.datasource
+package apps.mjn.data.datasource
 
 import apps.mjn.domain.entity.Country
 import io.reactivex.Single

@@ -1,9 +1,9 @@
-package apps.mjn.domain.data
+package apps.mjn.domain
 
 import apps.mjn.domain.entity.Country
 import kotlin.random.Random
 
-internal class CountryGenerator {
+class CountryGenerator {
     companion object {
         private const val alphabetLowerCase = "abcdefghijklnopqrstuvwxyz"
         private const val alphabetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

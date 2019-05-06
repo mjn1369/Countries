@@ -1,6 +1,5 @@
 package apps.mjn.domain
 
-import apps.mjn.domain.data.CountryGenerator
 import apps.mjn.domain.entity.Country
 import apps.mjn.domain.executer.PostExecutionThread
 import apps.mjn.domain.executer.UseCaseExecutor
