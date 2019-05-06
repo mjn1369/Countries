@@ -1,6 +1,7 @@
 package apps.mjn.domain.data
 
 import apps.mjn.domain.entity.Country
+import kotlin.random.Random
 
 internal class CountryGenerator {
     companion object {
@@ -9,17 +10,20 @@ internal class CountryGenerator {
 
         fun randomCountries(size: Int): List<Country> {
             val result = mutableListOf<Country>()
-            repeat(size){
+            repeat(size) {
                 result.add(randomCountry())
             }
             return result
         }
 
-        fun randomCountry() = Country(
+        private fun randomCountry() = Country(
             randomLowerCaseString(7),
             randomUpperCaseString(2),
             randomLowerCaseString(7),
-            randomLowerCaseString(5)
+            randomLowerCaseString(5),
+            randomLong(),
+            randomDouble(),
+            randomUrl()
         )
 
         private fun randomLowerCaseString(size: Int): String {
@@ -37,5 +41,11 @@ internal class CountryGenerator {
             }
             return result
         }
+
+        private fun randomLong() = Random.nextLong()
+
+        private fun randomDouble() = Random.nextDouble()
+
+        private fun randomUrl() = "https://www." + randomLowerCaseString(10) + ".com"
     }
 }
