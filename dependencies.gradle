@@ -1,0 +1,95 @@
+ext {
+
+    buildVersions = [
+            compileSdkVersion: 28,
+            minSdkVersion    : 19,
+            targetSdkVersion : 28
+    ]
+
+    //Libraries
+    kotlinVersion = "$kotlin_version"
+    androidxVersion = '1.0.0'
+    androidxLifecycleVersion = '2.0.0'
+    androidxConstraintLayoutVersion = '2.0.0-alpha2'
+    javaxAnnotationVersion = '1.3.2'
+    javaxInjectVersion = '1'
+    rxKotlinVersion = '2.3.0'
+    okhttpVersion = '3.11.0'
+    retrofitVersion = '2.4.0'
+    gsonVersion = '2.8.5'
+    daggerVersion = "2.16"
+    rxAndroidVersion = '2.1.0'
+    materialVersion = "1.1.0-alpha01"
+
+    //Testing
+    jUnitVersion = '4.12'
+    androidxEspressoVersion = '3.1.0'
+    androidxTestVersion = '1.1.0-alpha3'
+    mockKVersion = '1.8.12'
+    archTestingVersion = '1.1.1'
+
+    appDependencies = [
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
+            androidxAppcompat       : "androidx.appcompat:appcompat:${androidxVersion}",
+            androidxConstraintLayout: "androidx.constraintlayout:constraintlayout:${androidxConstraintLayoutVersion}",
+            androidxLifecycle       : "androidx.lifecycle:lifecycle-extensions:${androidxLifecycleVersion}",
+            dagger                  : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            daggerAndroid           : "com.google.dagger:dagger-android:${daggerVersion}",
+            daggerAndroidSupport    : "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerAndroidProcessor  : "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            rxKotlin                : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            rxAndroid               : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            material                : "com.google.android.material:material:${materialVersion}"
+    ]
+
+    appTestDependencies = [
+            androidxTestRunner  : "androidx.test:runner:${androidxTestVersion}",
+            androidxTestEspresso: "androidx.test.espresso:espresso-core:${androidxEspressoVersion}",
+            junit               : "junit:junit:${jUnitVersion}",
+            mockK               : "io.mockk:mockk:${mockKVersion}",
+            archTesting         : "android.arch.core:core-testing:${archTestingVersion}"
+    ]
+
+    domainDependencies = [
+            javaxAnnotation: "javax.annotation:javax.annotation-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxKotlin       : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+    ]
+
+    domainTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}",
+            mockK: "io.mockk:mockk:${mockKVersion}"
+    ]
+
+    dataDependencies = [
+            javaxAnnotation: "javax.annotation:javax.annotation-api:${javaxAnnotationVersion}",
+            javaxInject    : "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxKotlin       : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+    ]
+
+    dataTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}",
+            mockK: "io.mockk:mockk:${mockKVersion}"
+    ]
+
+    remoteDependencies = [
+            javaxAnnotation         : "javax.annotation:javax.annotation-api:${javaxAnnotationVersion}",
+            javaxInject             : "javax.inject:javax.inject:${javaxInjectVersion}",
+            rxKotlin                : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
+            okhttp                  : "com.squareup.okhttp3:okhttp:${okhttpVersion}",
+            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${okhttpVersion}",
+            retrofit                : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitGsonConverter   : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            gson                    : "com.google.code.gson:gson:${gsonVersion}",
+    ]
+
+    remoteTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}",
+            mockK: "io.mockk:mockk:${mockKVersion}"
+    ]
+
+}
