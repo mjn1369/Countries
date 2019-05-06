@@ -4,5 +4,5 @@ import apps.mjn.domain.entity.Country
 import io.reactivex.Single
 
 interface CountriesRepository {
-    fun getCountries(): Single<Country>
+    fun getCountries(): Single<List<Country>>
 }
