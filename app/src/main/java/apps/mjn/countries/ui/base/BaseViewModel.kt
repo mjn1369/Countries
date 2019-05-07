@@ -5,7 +5,7 @@ import apps.mjn.domain.interactor.base.UseCase
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val useCases: MutableList<UseCase> = mutableListOf()
+    protected val useCases: MutableList<UseCase> = mutableListOf()
 
     private fun dispose() {
         for (useCase in useCases) {
