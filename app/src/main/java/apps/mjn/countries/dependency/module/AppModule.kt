@@ -1,4 +1,4 @@
-package apps.mjn.countries.dependency
+package apps.mjn.countries.dependency.module
 
 import android.content.Context
 import apps.mjn.countries.app.CountriesApp
