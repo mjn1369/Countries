@@ -3,6 +3,7 @@ package apps.mjn.countries.dependency.component
 import apps.mjn.countries.app.CountriesApp
 import apps.mjn.countries.dependency.module.AppModule
 import apps.mjn.countries.dependency.module.NetworkModule
+import apps.mjn.countries.ui.main.MainModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -13,7 +14,8 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        MainModule::class
     ]
 )
 interface AppComponent : AndroidInjector<CountriesApp> {
