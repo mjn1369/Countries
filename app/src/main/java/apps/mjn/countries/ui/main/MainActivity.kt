@@ -1,9 +1,10 @@
-package apps.mjn.countries
+package apps.mjn.countries.ui.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import apps.mjn.countries.R
+import apps.mjn.countries.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

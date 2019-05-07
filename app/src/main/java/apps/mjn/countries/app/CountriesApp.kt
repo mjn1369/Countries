@@ -1,5 +1,6 @@
 package apps.mjn.countries.app
 
+import apps.mjn.countries.dependency.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
