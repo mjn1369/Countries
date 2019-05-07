@@ -1,6 +1,7 @@
 package apps.mjn.countries.ui.main
 
 import androidx.lifecycle.ViewModel
+import apps.mjn.countries.dependency.annotation.ViewModelKey
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
 import apps.mjn.data.datasource.CountriesRemoteDataSource
 import apps.mjn.data.repository.CountriesRepositoryImpl
@@ -9,6 +10,7 @@ import apps.mjn.remote.datasource.CountriesRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import dagger.multibindings.IntoMap
 
 @Module
 abstract class MainModule {
@@ -17,6 +19,8 @@ abstract class MainModule {
     internal abstract fun mainActivity(): MainActivity
 
     @Binds
+    @IntoMap
+    @ViewModelKey(GetCountriesViewModel::class)
     abstract fun bindCountriesListViewModel(getCountriesViewModel: GetCountriesViewModel): ViewModel
 
     @Binds
