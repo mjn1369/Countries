@@ -38,4 +38,10 @@
         <item name="android:textColor">@color/gray</item>
     </style>
 
+    <!-- Country Info -->
+    <style name="TextCountryInfoName">
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
