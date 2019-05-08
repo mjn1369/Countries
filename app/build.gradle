@@ -48,5 +48,4 @@ dependencies {
     testImplementation appTestDependencies.archTesting
     androidTestImplementation appTestDependencies.androidxTestRunner
     androidTestImplementation appTestDependencies.androidxTestEspresso
-    implementation files('libs/androidsvg.jar')
 }
