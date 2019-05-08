@@ -8,6 +8,7 @@ import android.widget.Toast
 import apps.mjn.countries.ARG_COUNTRY
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.model.ParcelableCountry
+import apps.mjn.countries.utils.getDrawableId
 import apps.mjn.countries.utils.toParcelable
 import apps.mjn.domain.entity.Country
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -51,5 +52,8 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
 
     private fun setupViews() {
         tvCountryInfoName.text = country.name
+        country.alpha2Code?.let {
+            ivCountryInfoFlag.setImageResource(context!!.getDrawableId(context!!.resources.getString(R.string.flag_prefix, it.toLowerCase())))
+        }
     }
 }
