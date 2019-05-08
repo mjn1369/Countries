@@ -1,4 +1,4 @@
-package apps.mjn.countries.ui.main
+package apps.mjn.countries.ui.screens.main
 
 import androidx.lifecycle.ViewModel
 import apps.mjn.countries.dependency.annotation.ViewModelKey

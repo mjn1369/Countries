@@ -1,4 +1,4 @@
-package apps.mjn.countries.ui.main
+package apps.mjn.countries.ui.screens.main
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,8 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.base.BaseActivity
-import apps.mjn.countries.ui.main.adapter.CountriesAdapter
-import apps.mjn.countries.ui.main.adapter.VerticalSpaceItemDecoration
+import apps.mjn.countries.ui.screens.main.adapter.CountriesAdapter
+import apps.mjn.countries.ui.screens.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.model.Resource
 import apps.mjn.countries.ui.model.ResourceState
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel

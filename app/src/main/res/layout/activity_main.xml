@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/space_1x"
-        tools:context=".ui.main.MainActivity">
+        tools:context=".ui.screens.main.MainActivity">
 
     <ProgressBar
             android:id="@+id/loadingProgressBar"

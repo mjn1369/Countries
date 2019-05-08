@@ -1,4 +1,4 @@
-package apps.mjn.countries.ui.details
+package apps.mjn.countries.ui.screens.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
