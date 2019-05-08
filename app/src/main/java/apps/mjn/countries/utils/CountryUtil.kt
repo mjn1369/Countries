@@ -10,6 +10,5 @@ fun Country.toParcelable() =
             capital,
             region,
             population,
-            area,
-            flag
+            area
         )

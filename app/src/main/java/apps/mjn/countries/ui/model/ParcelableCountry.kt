@@ -5,11 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ParcelableCountry(
-    val name: String?,
-    val alpha2Code: String?,
-    val capital: String?,
-    val region: String?,
-    val population: Long?,
-    val area: Double?,
-    val flag: String?
+    val name: String,
+    val alpha2Code: String,
+    val capital: String,
+    val region: String,
+    val population: Long,
+    val area: Double
 ): Parcelable

@@ -1,7 +1,6 @@
 package apps.mjn.countries.ui.screens.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import apps.mjn.countries.R
@@ -12,10 +11,13 @@ import apps.mjn.countries.ui.model.Resource
 import apps.mjn.countries.ui.model.ResourceState
 import apps.mjn.countries.ui.screens.details.DetailsWindowBottomSheet
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
+import apps.mjn.countries.utils.SortType
+import apps.mjn.countries.utils.getCountryNameComparator
 import apps.mjn.domain.entity.Country
 import kotlinx.android.synthetic.main.activity_main.*
 import mjn.apps.weather.extension.gone
 import mjn.apps.weather.extension.visible
+import java.util.*
 
 class MainActivity : BaseActivity() {
 
@@ -119,7 +121,9 @@ class MainActivity : BaseActivity() {
     private fun handleSuccess(data: List<Country>?) {
         data?.let {
             showList()
-            countriesAdapter?.setItems(data)
+            countriesAdapter?.setItems(sortCountries(data,
+                getCountryNameComparator(SortType.ASC)
+            ))
         } ?: handleError(getString(R.string.countries_error))
     }
 
@@ -135,5 +139,11 @@ class MainActivity : BaseActivity() {
         hideLoading()
         hideMessage()
         hideList()
+    }
+
+    private fun sortCountries(list: List<Country>, comparator: Comparator<Country>): List<Country> {
+        Collections.sort(list, comparator)
+        return list.sortedWith(nullsLast(comparator))
+
     }
 }
