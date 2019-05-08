@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/default_margin"
+        android:padding="@dimen/space_1x"
         tools:context=".ui.main.MainActivity">
 
     <ProgressBar
@@ -38,7 +38,7 @@
             style="@style/messageActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginTop="@dimen/space_1x"
             android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="@+id/messageTextView"
             app:layout_constraintRight_toRightOf="@+id/messageTextView"
