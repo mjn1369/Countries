@@ -4,12 +4,13 @@
                                                    android:orientation="vertical"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="wrap_content"
-                                                   android:padding="@dimen/space_1x">
+                                                   android:padding="@dimen/space_2x">
 
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivCountryInfoFlag"
             android:layout_width="140dp"
             android:layout_height="98dp"
+            android:src="@drawable/ic_flag"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tvCountryItemName"
             app:layout_constraintLeft_toLeftOf="parent"
