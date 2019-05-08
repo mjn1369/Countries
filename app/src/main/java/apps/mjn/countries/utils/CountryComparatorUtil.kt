@@ -14,25 +14,3 @@ fun getCountryNameComparator(sortType: SortType): Comparator<Country> {
         }
     }
 }
-
-fun getCountryAreaComparator(sortType: SortType): Comparator<Country> {
-    return when (sortType) {
-        SortType.ASC -> {
-            compareBy { it.area }
-        }
-        SortType.DESC -> {
-            compareByDescending { it.area }
-        }
-    }
-}
-
-fun getCountryPopulationComparator(sortType: SortType): Comparator<Country> {
-    return when (sortType) {
-        SortType.ASC -> {
-            compareBy { it.population }
-        }
-        SortType.DESC -> {
-            compareByDescending { it.population }
-        }
-    }
-}

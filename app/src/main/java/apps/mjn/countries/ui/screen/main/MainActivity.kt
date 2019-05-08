@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
         viewModel.getData().observe(this, Observer(::listenToViewModelData))
     }
 
-    private fun initList(){
+    private fun initList() {
         countriesAdapter = CountriesAdapter(
             ArrayList()
         ) {
@@ -121,17 +121,20 @@ class MainActivity : BaseActivity() {
     private fun handleSuccess(data: List<Country>?) {
         data?.let {
             showList()
-            countriesAdapter?.setItems(sortCountries(data,
-                getCountryNameComparator(SortType.ASC)
-            ))
+            countriesAdapter?.setItems(
+                sortCountries(
+                    data,
+                    getCountryNameComparator(SortType.ASC)
+                )
+            )
         } ?: handleError(getString(R.string.countries_error))
     }
 
-    private fun showList(){
+    private fun showList() {
         recyclerViewCountries.visible()
     }
 
-    private fun hideList(){
+    private fun hideList() {
         recyclerViewCountries.gone()
     }
 
@@ -144,6 +147,5 @@ class MainActivity : BaseActivity() {
     private fun sortCountries(list: List<Country>, comparator: Comparator<Country>): List<Country> {
         Collections.sort(list, comparator)
         return list.sortedWith(nullsLast(comparator))
-
     }
 }
