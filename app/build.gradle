@@ -36,6 +36,8 @@ dependencies {
     implementation appDependencies.androidxConstraintLayout
     implementation appDependencies.androidxLifecycle
     implementation appDependencies.material
+    implementation appDependencies.glide
+    kapt appDependencies.glideCompiler
     implementation appDependencies.rxKotlin
     implementation appDependencies.rxAndroid
     implementation appDependencies.dagger
