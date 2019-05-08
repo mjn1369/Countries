@@ -1,4 +1,4 @@
-package apps.mjn.countries.ui.screens.main.adapter
+package apps.mjn.countries.ui.screen.main.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

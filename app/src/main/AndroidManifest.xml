@@ -12,7 +12,7 @@
             android:supportsRtl="true"
             android:name=".app.CountriesApp"
             android:theme="@style/AppTheme">
-        <activity android:name="apps.mjn.countries.ui.screens.main.MainActivity">
+        <activity android:name="apps.mjn.countries.ui.screen.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

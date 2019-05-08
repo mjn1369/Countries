@@ -1,15 +1,15 @@
-package apps.mjn.countries.ui.screens.main
+package apps.mjn.countries.ui.screen.main
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.base.BaseActivity
-import apps.mjn.countries.ui.screens.main.adapter.CountriesAdapter
-import apps.mjn.countries.ui.screens.main.adapter.VerticalSpaceItemDecoration
+import apps.mjn.countries.ui.screen.main.adapter.CountriesAdapter
+import apps.mjn.countries.ui.screen.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.model.Resource
 import apps.mjn.countries.ui.model.ResourceState
-import apps.mjn.countries.ui.screens.details.DetailsWindowBottomSheet
+import apps.mjn.countries.ui.screen.details.DetailsWindowBottomSheet
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
 import apps.mjn.countries.utils.SortType
 import apps.mjn.countries.utils.getCountryNameComparator

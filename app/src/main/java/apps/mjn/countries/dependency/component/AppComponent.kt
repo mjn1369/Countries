@@ -4,7 +4,7 @@ import apps.mjn.countries.app.CountriesApp
 import apps.mjn.countries.dependency.module.AppModule
 import apps.mjn.countries.dependency.module.NetworkModule
 import apps.mjn.countries.dependency.module.ViewModelModule
-import apps.mjn.countries.ui.screens.main.MainModule
+import apps.mjn.countries.ui.screen.main.MainModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule

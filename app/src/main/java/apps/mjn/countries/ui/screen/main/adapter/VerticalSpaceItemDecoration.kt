@@ -1,4 +1,4 @@
-package apps.mjn.countries.ui.screens.main.adapter
+package apps.mjn.countries.ui.screen.main.adapter
 
 import android.graphics.Rect
 import android.view.View
