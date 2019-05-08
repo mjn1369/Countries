@@ -1,9 +1,22 @@
 <resources>
     <string name="app_name">Countries</string>
-
+    <string name="flag_prefix">flag_%1$s</string>
+    
+    <!-- Messages -->
     <string name="countries_error">Couldn\'t Fetch Countries</string>
     <string name="try_again">Try Again</string>
     <string name="country_notfound">Country not found</string>
-
-    <string name="flag_prefix">flag_%1$s</string>
+    
+    <!-- Labels -->
+    <string name="dots">
+        .......................................................
+        .......................................................
+        .......................................................
+        .......................................................
+    </string>
+    <string name="region">Region</string>
+    <string name="capital">Capital</string>
+    <string name="calling_codes">Calling Codes</string>
+    <string name="population">Population</string>
+    <string name="area">Area</string>
 </resources>

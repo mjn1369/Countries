@@ -55,5 +55,10 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
         country.alpha2Code?.let {
             ivCountryInfoFlag.setImageResource(context!!.getDrawableId(context!!.resources.getString(R.string.flag_prefix, it.toLowerCase())))
         }
+        tvCountryInfoRegionValue.text = country.region
+        tvCountryInfoPopulationValue.text = country.population.toString()
+        tvCountryInfoAreaValue.text = country.area.toString()
+        tvCountryInfoCapitalValue.text = country.capital
+        tvCountryInfoCallingCodesValue.text = country.callingCodes.joinToString { "+$it" }
     }
 }

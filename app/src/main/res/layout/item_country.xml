@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/space_2x">
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCountryItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -20,14 +20,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/tvCountryItemAlpha2Code"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"/>
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCountryItemAlpha2Code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextCountryItemAlpha2Code"
                 app:layout_constraintTop_toBottomOf="@+id/tvCountryItemName"
                 app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCountryItemRegion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -46,6 +46,18 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TextCountryInfoDetails">
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
+    <style name="TextCountryInfoDots">
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
     <!-- BOTTOM SHEET -->
     <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>

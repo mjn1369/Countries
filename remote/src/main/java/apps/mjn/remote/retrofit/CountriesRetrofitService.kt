@@ -5,6 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface CountriesRetrofitService {
-    @GET("all?fields=name;alpha2Code;capital;region;population;area;flag")
+    @GET("all?fields=name;alpha2Code;capital;region;population;area;callingCodes")
     fun getCountries(): Call<List<Country>>
 }
