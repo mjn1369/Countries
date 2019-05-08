@@ -10,6 +10,7 @@ import apps.mjn.countries.ui.screens.main.adapter.CountriesAdapter
 import apps.mjn.countries.ui.screens.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.model.Resource
 import apps.mjn.countries.ui.model.ResourceState
+import apps.mjn.countries.ui.screens.details.DetailsWindowBottomSheet
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
 import apps.mjn.domain.entity.Country
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,7 +50,11 @@ class MainActivity : BaseActivity() {
     }
 
     private fun onCountryClick(country: Country) {
-        Toast.makeText(this, country.name, Toast.LENGTH_SHORT).show()
+        showDetails(country)
+    }
+
+    private fun showDetails(country: Country) {
+        DetailsWindowBottomSheet.getInstance(country).show(supportFragmentManager, "")
     }
 
     private fun getCountries() {

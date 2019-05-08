@@ -8,12 +8,24 @@ import android.widget.Toast
 import apps.mjn.countries.ARG_COUNTRY
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.model.ParcelableCountry
+import apps.mjn.countries.utils.toParcelable
+import apps.mjn.domain.entity.Country
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.details_window.*
 
 class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var country: ParcelableCountry
+
+    companion object {
+        fun getInstance(country: Country): DetailsWindowBottomSheet {
+            val fragment = DetailsWindowBottomSheet()
+            val arguments = Bundle()
+            arguments.putParcelable(ARG_COUNTRY, country.toParcelable())
+            fragment.arguments = arguments
+            return fragment
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
