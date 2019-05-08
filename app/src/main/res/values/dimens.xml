@@ -14,4 +14,8 @@
 
     <!-- Country List Item -->
     <dimen name="radius_country_item">@dimen/space_1x</dimen>
+
+    <!-- Country Details Window -->
+    <dimen name="flag_height">90dp</dimen>
+    <dimen name="flag_width">135dp</dimen>
 </resources>

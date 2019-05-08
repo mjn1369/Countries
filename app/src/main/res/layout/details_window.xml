@@ -9,8 +9,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivCountryInfoFlag"
-            android:layout_width="140dp"
-            android:layout_height="98dp"
+            android:layout_width="@dimen/flag_width"
+            android:layout_height="@dimen/flag_height"
             android:src="@drawable/ic_flag"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tvCountryItemName"
