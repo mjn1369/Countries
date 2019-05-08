@@ -1,10 +1,13 @@
 package apps.mjn.countries.ui.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.base.BaseActivity
+import apps.mjn.countries.ui.main.adapter.CountriesAdapter
+import apps.mjn.countries.ui.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.model.Resource
 import apps.mjn.countries.ui.model.ResourceState
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
@@ -16,12 +19,14 @@ import mjn.apps.weather.extension.visible
 class MainActivity : BaseActivity() {
 
     private lateinit var viewModel: GetCountriesViewModel
+    private lateinit var countriesAdapter: CountriesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         buildViewModel()
         observeViewModel()
+        initList()
         getCountries()
     }
 
@@ -31,6 +36,20 @@ class MainActivity : BaseActivity() {
 
     private fun observeViewModel() {
         viewModel.getData().observe(this, Observer(::listenToViewModelData))
+    }
+
+    private fun initList(){
+        countriesAdapter = CountriesAdapter(
+            ArrayList()
+        ) {
+            onCountryClick(it)
+        }
+        recyclerViewCountries.addItemDecoration(VerticalSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.space_0_5x)))
+        recyclerViewCountries.adapter = countriesAdapter
+    }
+
+    private fun onCountryClick(country: Country) {
+        Toast.makeText(this, country.name, Toast.LENGTH_SHORT).show()
     }
 
     private fun getCountries() {
@@ -93,11 +112,23 @@ class MainActivity : BaseActivity() {
     }
 
     private fun handleSuccess(data: List<Country>?) {
+        data?.let {
+            showList()
+            countriesAdapter?.setItems(data)
+        } ?: handleError(getString(R.string.countries_error))
+    }
 
+    private fun showList(){
+        recyclerViewCountries.visible()
+    }
+
+    private fun hideList(){
+        recyclerViewCountries.gone()
     }
 
     private fun clearScreen() {
         hideLoading()
         hideMessage()
+        hideList()
     }
 }
