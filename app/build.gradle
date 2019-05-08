@@ -25,33 +25,28 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation project(":domain")
-    implementation project(":data")
-    implementation project(":remote")
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':remote')
     def appDependencies = rootProject.ext.appDependencies
     def appTestDependencies = rootProject.ext.appTestDependencies
-
     implementation appDependencies.kotlin
     implementation appDependencies.androidxAppcompat
     implementation appDependencies.androidxConstraintLayout
     implementation appDependencies.androidxLifecycle
     implementation appDependencies.material
-
     implementation appDependencies.rxKotlin
     implementation appDependencies.rxAndroid
-
     implementation appDependencies.dagger
     kapt appDependencies.daggerCompiler
     implementation appDependencies.daggerAndroid
     implementation appDependencies.daggerAndroidSupport
     kapt appDependencies.daggerAndroidProcessor
-
     testImplementation appTestDependencies.junit
     testImplementation appTestDependencies.mockK
     testImplementation appTestDependencies.archTesting
     androidTestImplementation appTestDependencies.androidxTestRunner
     androidTestImplementation appTestDependencies.androidxTestEspresso
+    implementation files('libs/androidsvg.jar')
 }
