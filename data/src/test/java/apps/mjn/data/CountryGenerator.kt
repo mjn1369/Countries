@@ -23,7 +23,7 @@ class CountryGenerator {
             randomLowerCaseString(5),
             randomLong(),
             randomDouble(),
-            randomUrl()
+            mutableListOf()
         )
 
         private fun randomLowerCaseString(size: Int): String {
