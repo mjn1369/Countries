@@ -56,8 +56,8 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
             ivCountryInfoFlag.setImageResource(context!!.getDrawableId(context!!.resources.getString(R.string.flag_prefix, it.toLowerCase())))
         }
         tvCountryInfoRegionValue.text = country.region
-        tvCountryInfoPopulationValue.text = country.population.toString()
-        tvCountryInfoAreaValue.text = country.area.toString()
+        tvCountryInfoPopulationValue.text = "%,d".format(country.population)
+        tvCountryInfoAreaValue.text = "%,d".format(country.area.toInt())
         tvCountryInfoCapitalValue.text = country.capital
         tvCountryInfoCallingCodesValue.text = country.callingCodes.joinToString { "+$it" }
     }
