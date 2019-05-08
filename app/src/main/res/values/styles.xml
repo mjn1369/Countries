@@ -23,6 +23,7 @@
     <style name="TextCountryItemName">
         <item name="android:textSize">@dimen/medium_text_size</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:singleLine">true</item>
         <item name="android:marqueeRepeatLimit">marquee_forever</item>
         <item name="android:ellipsize">marquee</item>
@@ -42,6 +43,7 @@
     <style name="TextCountryInfoName">
         <item name="android:textSize">@dimen/normal_text_size</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- BOTTOM SHEET -->
