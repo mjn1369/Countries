@@ -76,7 +76,14 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
         if (country.callingCodes.isNullOrEmpty()) {
             tvCountryInfoCallingCodesValue.text = context!!.getString(R.string.unknown)
         } else {
-            tvCountryInfoCallingCodesValue.text = country.callingCodes.joinToString { "+$it" }
+            var callingCodes = country.callingCodes.filter { it.isNotBlank() }.joinToString {
+                "+$it"
+            }
+            if(callingCodes.isNotEmpty()) {
+                tvCountryInfoCallingCodesValue.text = callingCodes
+            } else {
+                tvCountryInfoCallingCodesValue.text = context!!.getString(R.string.unknown)
+            }
         }
     }
 }
