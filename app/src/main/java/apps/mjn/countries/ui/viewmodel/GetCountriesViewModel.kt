@@ -32,4 +32,12 @@ class GetCountriesViewModel @Inject constructor(private val getCountriesUseCase:
     private fun error(throwable: Throwable) {
         data.value = Resource(ResourceState.ERROR, throwable = throwable)
     }
+
+    fun search(query: String): List<Country> {
+        return if(query.isEmpty()){
+            data.value?.data ?: mutableListOf()
+        } else {
+            data.value?.data?.filter { it.name.toLowerCase().contains(query) } ?: mutableListOf()
+        }
+    }
 }
