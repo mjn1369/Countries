@@ -53,12 +53,30 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
     private fun setupViews() {
         tvCountryInfoName.text = country.name
         country.alpha2Code?.let {
-            ivCountryInfoFlag.setImageResource(context!!.getDrawableId(context!!.resources.getString(R.string.flag_prefix, it.toLowerCase())))
+            ivCountryInfoFlag.setImageResource(
+                context!!.getDrawableId(
+                    context!!.resources.getString(
+                        R.string.flag_prefix,
+                        it.toLowerCase()
+                    )
+                )
+            )
         }
         tvCountryInfoRegionValue.text = country.region
         tvCountryInfoPopulationValue.text = "%,d".format(country.population)
-        tvCountryInfoAreaValue.text = "%,d".format(country.area.toInt())
-        tvCountryInfoCapitalValue.text = country.capital
-        tvCountryInfoCallingCodesValue.text = country.callingCodes.joinToString { "+$it" }
+        tvCountryInfoAreaValue.text =
+            country.area?.let {
+                "%,d".format(country.area!!.toInt())
+            } ?: context!!.getString(R.string.unknown)
+        if (country.capital.isNullOrEmpty()) {
+            tvCountryInfoCapitalValue.text = context!!.getString(R.string.unknown)
+        } else {
+            tvCountryInfoCapitalValue.text = country.capital
+        }
+        if (country.callingCodes.isNullOrEmpty()) {
+            tvCountryInfoCallingCodesValue.text = context!!.getString(R.string.unknown)
+        } else {
+            tvCountryInfoCallingCodesValue.text = country.callingCodes.joinToString { "+$it" }
+        }
     }
 }

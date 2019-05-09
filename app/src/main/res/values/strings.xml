@@ -16,4 +16,5 @@
     <string name="calling_codes">Calling Codes</string>
     <string name="population">Population</string>
     <string name="area">Area</string>
+    <string name="unknown">\?</string>
 </resources>
