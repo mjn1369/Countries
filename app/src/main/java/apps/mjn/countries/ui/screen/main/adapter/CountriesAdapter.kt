@@ -7,9 +7,14 @@ import apps.mjn.countries.R
 import apps.mjn.domain.entity.Country
 
 class CountriesAdapter(
-    private var postItems: ArrayList<Country>,
     private val onItemClick: (Country) -> (Unit)
 ) : RecyclerView.Adapter<CountryViewHolder>() {
+
+    var items: List<Country> = arrayListOf()
+        set(data) {
+            field = data
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_country, parent, false)
@@ -17,14 +22,8 @@ class CountriesAdapter(
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.bind(postItems[position], onItemClick)
+        holder.bind(items[position], onItemClick)
     }
 
-    fun setItems(data: List<Country>){
-        postItems.clear()
-        postItems.addAll(data)
-        notifyDataSetChanged()
-    }
-
-    override fun getItemCount() = postItems.size
+    override fun getItemCount() = items.size
 }

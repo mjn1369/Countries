@@ -1,25 +1,25 @@
 package apps.mjn.countries.ui.screen.main
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.base.BaseActivity
-import apps.mjn.countries.ui.screen.main.adapter.CountriesAdapter
-import apps.mjn.countries.ui.screen.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.model.Resource
 import apps.mjn.countries.ui.model.ResourceState
 import apps.mjn.countries.ui.screen.details.DetailsWindowBottomSheet
+import apps.mjn.countries.ui.screen.main.adapter.CountriesAdapter
+import apps.mjn.countries.ui.screen.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
-import apps.mjn.countries.utils.SortType
-import apps.mjn.countries.utils.getCountryNameComparator
 import apps.mjn.domain.entity.Country
+import com.jakewharton.rxbinding3.widget.afterTextChangeEvents
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import mjn.apps.weather.extension.gone
 import mjn.apps.weather.extension.visible
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity() {
 
@@ -40,30 +40,18 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initViews() {
-        countriesAdapter = CountriesAdapter(
-            ArrayList()
-        ) {
-            onCountryClick(it)
-        }
+        countriesAdapter = CountriesAdapter(::onCountryClick)
         recyclerViewCountries.addItemDecoration(VerticalSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.space_0_5x)))
         recyclerViewCountries.adapter = countriesAdapter
 
-        etSearch.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                // not implemented
+        etSearch.afterTextChangeEvents()
+            .skipInitialValue()
+            .debounce(300L, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                success(viewModel.search(it.editable.toString()))
             }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // not implemented
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!s.isNullOrEmpty()) {
-                    success(viewModel.search(s.toString().toLowerCase()))
-                }
-            }
-
-        })
     }
 
     private fun onCountryClick(country: Country) {
@@ -75,15 +63,22 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getCountries() {
+        disableSearch()
         viewModel.load()
     }
 
     private fun listenToViewModelData(resource: Resource<List<Country>>?) {
         resource?.let {
             when (resource.resourceState) {
-                ResourceState.LOADING -> { loading() }
-                ResourceState.SUCCESS -> { success(resource.data) }
-                ResourceState.ERROR -> { error(resource.throwable?.message) }
+                ResourceState.LOADING -> {
+                    loading()
+                }
+                ResourceState.SUCCESS -> {
+                    success(resource.data)
+                }
+                ResourceState.ERROR -> {
+                    error(resource.throwable?.message)
+                }
             }
         }
     }
@@ -99,11 +94,24 @@ class MainActivity : BaseActivity() {
 
     private fun error(message: String?) {
         clearScreen()
+        disableSearch()
         setMessage(
-            message ?: getString(R.string.countries_error), getString(R.string.try_again)) {
+            message ?: getString(R.string.countries_error), getString(R.string.try_again)
+        ) {
             loading()
             viewModel.load()
         }
+    }
+
+    private fun disableSearch(){
+        etSearch.isEnabled = false
+        etSearch.isClickable = false
+        etSearch.clearFocus()
+    }
+
+    private fun enableSearch(){
+        etSearch.isEnabled = true
+        etSearch.isClickable = true
     }
 
     private fun setMessage(message: String?, actionMessage: String? = null, action: () -> Unit) {
@@ -126,17 +134,13 @@ class MainActivity : BaseActivity() {
 
     private fun success(data: List<Country>?) {
         clearScreen()
+        enableSearch()
         data?.let {
-            if(data.isEmpty()){
+            if (data.isEmpty()) {
                 setMessage(getString(R.string.countries_empty), null) {}
             } else {
                 showList()
-                countriesAdapter?.setItems(
-                    sortCountries(
-                        data,
-                        getCountryNameComparator(SortType.ASC)
-                    )
-                )
+                countriesAdapter.items = data
             }
         } ?: error(getString(R.string.countries_error))
     }

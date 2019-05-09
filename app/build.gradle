@@ -37,6 +37,7 @@ dependencies {
     implementation appDependencies.androidxLifecycle
     implementation appDependencies.material
     implementation appDependencies.rxKotlin
+    implementation appDependencies.rxBinding
     implementation appDependencies.rxAndroid
     implementation appDependencies.dagger
     kapt appDependencies.daggerCompiler
