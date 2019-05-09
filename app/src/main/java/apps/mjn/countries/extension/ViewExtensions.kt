@@ -1,4 +1,4 @@
-package mjn.apps.weather.extension
+package apps.mjn.countries.extension
 
 import android.view.View
 import apps.mjn.countries.R

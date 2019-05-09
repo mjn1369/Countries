@@ -32,11 +32,6 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.BottomSheetDialogTheme)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.details_window, container, false)
 
@@ -59,16 +54,14 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
         tvCountryInfoName.text = country.name
 
         // set flag
-        country.alpha2Code?.let {
-            ivCountryInfoFlag.setImageResource(
-                context!!.getDrawableId(
-                    context!!.resources.getString(
-                        R.string.flag_prefix,
-                        it.toLowerCase()
-                    )
+        ivCountryInfoFlag.setImageResource(
+            context!!.getDrawableId(
+                context!!.resources.getString(
+                    R.string.flag_prefix,
+                    country.alpha2Code.toLowerCase()
                 )
             )
-        }
+        )
 
         // set region
         tvCountryInfoRegionValue.text = country.region
@@ -93,7 +86,7 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
         if (country.callingCodes.isNullOrEmpty()) {
             tvCountryInfoCallingCodesValue.text = context!!.getString(R.string.unknown)
         } else {
-            var callingCodes = country.callingCodes.filter { it.isNotBlank() }.joinToString {
+            val callingCodes = country.callingCodes.filter { it.isNotBlank() }.joinToString {
                 "+$it"
             }
             if (callingCodes.isNotEmpty()) {

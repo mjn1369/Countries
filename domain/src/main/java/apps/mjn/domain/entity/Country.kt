@@ -9,9 +9,4 @@ data class Country(
     val area: Double?,
     val callingCodes: List<String>,
     val latlng: List<Double>
-) {
-    override fun equals(other: Any?): Boolean {
-        other as Country
-        return name == other.name
-    }
-}
+)

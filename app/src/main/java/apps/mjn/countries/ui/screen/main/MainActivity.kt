@@ -3,7 +3,6 @@ package apps.mjn.countries.ui.screen.main
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.SimpleItemAnimator
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.base.BaseActivity
 import apps.mjn.countries.ui.model.Resource
@@ -12,13 +11,15 @@ import apps.mjn.countries.ui.screen.details.DetailsWindowBottomSheet
 import apps.mjn.countries.ui.screen.main.adapter.CountriesAdapter
 import apps.mjn.countries.ui.screen.main.adapter.VerticalSpaceItemDecoration
 import apps.mjn.countries.ui.viewmodel.GetCountriesViewModel
+import apps.mjn.countries.utils.SortType
+import apps.mjn.countries.utils.getCountryNameComparator
 import apps.mjn.domain.entity.Country
 import com.jakewharton.rxbinding3.widget.afterTextChangeEvents
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import mjn.apps.weather.extension.gone
-import mjn.apps.weather.extension.visible
+import apps.mjn.countries.extension.gone
+import apps.mjn.countries.extension.visible
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -146,7 +147,7 @@ class MainActivity : BaseActivity() {
                 setMessage(getString(R.string.countries_empty), null) {}
             } else {
                 showList()
-                countriesAdapter.items = data
+                countriesAdapter.items = sortCountries(data, getCountryNameComparator(SortType.ASC))
             }
         } ?: error(getString(R.string.countries_error))
     }

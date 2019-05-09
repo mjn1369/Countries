@@ -1,6 +1,6 @@
 package apps.mjn.remote.extension
 
-import apps.mjn.domain.failure.Failure
+import apps.mjn.remote.failure.Failure
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.Single

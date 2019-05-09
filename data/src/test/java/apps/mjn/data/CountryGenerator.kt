@@ -47,6 +47,5 @@ class CountryGenerator {
 
         private fun randomDouble() = Random.nextDouble()
 
-        private fun randomUrl() = "https://www." + randomLowerCaseString(10) + ".com"
     }
 }
