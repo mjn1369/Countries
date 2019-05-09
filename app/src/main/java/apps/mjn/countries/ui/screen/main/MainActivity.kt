@@ -27,17 +27,13 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        buildViewModel()
-        observeViewModel()
+        buildAndObserveViewModel()
         initList()
         getCountries()
     }
 
-    private fun buildViewModel() {
+    private fun buildAndObserveViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(GetCountriesViewModel::class.java)
-    }
-
-    private fun observeViewModel() {
         viewModel.getData().observe(this, Observer(::listenToViewModelData))
     }
 
@@ -66,38 +62,31 @@ class MainActivity : BaseActivity() {
     private fun listenToViewModelData(resource: Resource<List<Country>>?) {
         resource?.let {
             when (resource.resourceState) {
-                ResourceState.LOADING -> {
-                    clearScreen()
-                    showLoading()
-                }
-                ResourceState.SUCCESS -> {
-                    clearScreen()
-                    handleSuccess(resource.data)
-                }
-                ResourceState.ERROR -> {
-                    clearScreen()
-                    handleError(resource.throwable?.message)
-                }
+                ResourceState.LOADING -> { loading() }
+                ResourceState.SUCCESS -> { success(resource.data) }
+                ResourceState.ERROR -> { error(resource.throwable?.message) }
             }
         }
     }
 
-    private fun handleError(message: String?) {
-        setMessage(
-            message ?: getString(R.string.countries_error),
-            getString(R.string.try_again)
-        ) {
-            showLoading()
-            viewModel.load()
-        }
-    }
-
-    private fun showLoading() {
+    private fun loading() {
+        clearScreen()
         loadingProgressBar.visible()
     }
 
     private fun hideLoading() {
         loadingProgressBar.gone()
+    }
+
+    private fun error(message: String?) {
+        clearScreen()
+        setMessage(
+            message ?: getString(R.string.countries_error),
+            getString(R.string.try_again)
+        ) {
+            loading()
+            viewModel.load()
+        }
     }
 
     private fun setMessage(message: String?, actionMessage: String?, action: () -> Unit) {
@@ -118,7 +107,8 @@ class MainActivity : BaseActivity() {
         messageActionButton.gone()
     }
 
-    private fun handleSuccess(data: List<Country>?) {
+    private fun success(data: List<Country>?) {
+        clearScreen()
         data?.let {
             showList()
             countriesAdapter?.setItems(
@@ -127,7 +117,7 @@ class MainActivity : BaseActivity() {
                     getCountryNameComparator(SortType.ASC)
                 )
             )
-        } ?: handleError(getString(R.string.countries_error))
+        } ?: error(getString(R.string.countries_error))
     }
 
     private fun showList() {
