@@ -18,7 +18,7 @@
                 style="@style/TextCountryItemName"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/tvCountryItemAlpha2Code"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"/>
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCountryItemAlpha2Code"
@@ -26,13 +26,13 @@
                 android:layout_height="wrap_content"
                 style="@style/TextCountryItemAlpha2Code"
                 app:layout_constraintTop_toBottomOf="@+id/tvCountryItemName"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"/>
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCountryItemRegion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextCountryItemRegion"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tvCountryItemAlpha2Code"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

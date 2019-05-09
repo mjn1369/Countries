@@ -3,6 +3,8 @@
           package="apps.mjn.countries">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
             android:allowBackup="true"
@@ -12,7 +14,7 @@
             android:supportsRtl="true"
             android:name=".app.CountriesApp"
             android:theme="@style/AppTheme">
-        <activity android:name="apps.mjn.countries.ui.screen.main.MainActivity">
+        <activity android:name="apps.mjn.countries.ui.screen.main.MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
