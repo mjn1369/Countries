@@ -6,7 +6,10 @@
     <string name="countries_error">Couldn\'t Fetch Countries</string>
     <string name="try_again">Try Again</string>
     <string name="country_notfound">Country not found</string>
-    
+
+    <!-- Main Activity -->
+    <string name="search_hint">Search...</string>
+
     <!-- Labels -->
     <string name="dots">
         .....................................................................................................................................................................
