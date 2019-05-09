@@ -11,5 +11,6 @@ data class ParcelableCountry(
     val region: String,
     val population: Long,
     val area: Double?,
-    val callingCodes: List<String>
+    val callingCodes: List<String>,
+    val latlng: List<Double>
 ) : Parcelable

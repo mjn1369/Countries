@@ -23,6 +23,7 @@ class CountryGenerator {
             randomLowerCaseString(5),
             randomLong(),
             randomDouble(),
+            mutableListOf(),
             mutableListOf()
         )
 
