@@ -13,6 +13,7 @@
 
     <!-- Main Activity -->
     <dimen name="search_icon">36dp</dimen>
+    <dimen name="clear_search_icon">28dp</dimen>
 
     <!-- Country List Item -->
     <dimen name="radius_country_item">@dimen/space_1x</dimen>

@@ -57,8 +57,17 @@ class MainActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
+                if(it.editable.isNullOrBlank()){
+                    ivClearSearch.gone()
+                } else {
+                    ivClearSearch.visible()
+                }
                 success(viewModel.search(it.editable.toString()))
             }
+
+        ivClearSearch.setOnClickListener {
+            etSearch.text = null
+        }
     }
 
     private fun onCountryClick(country: Country) {
