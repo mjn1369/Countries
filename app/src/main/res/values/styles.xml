@@ -63,6 +63,11 @@
         <item name="android:textColor">@color/darkGray</item>
     </style>
 
+    <style name="TextCountryInfoButton">
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextCountryInfoDots">
         <item name="android:textSize">@dimen/small_text_size</item>
         <item name="android:textColor">@color/gray</item>

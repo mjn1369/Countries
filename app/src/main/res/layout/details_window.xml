@@ -256,6 +256,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ivCountryInfoCallingCodes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/background_button"
             android:layout_marginTop="@dimen/space_2x"
             android:padding="@dimen/space_2x">
         <androidx.appcompat.widget.AppCompatImageView
@@ -276,7 +277,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivCountryInfoShowOnMap"
-                style="@style/TextCountryInfoDetails"
+                style="@style/TextCountryInfoButton"
                 android:text="@string/show_on_map"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
