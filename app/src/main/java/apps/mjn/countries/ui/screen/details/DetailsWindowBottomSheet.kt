@@ -1,5 +1,7 @@
 package apps.mjn.countries.ui.screen.details
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,8 @@ import apps.mjn.countries.utils.toParcelable
 import apps.mjn.domain.entity.Country
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.details_window.*
+import java.lang.Exception
+
 
 class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
 
@@ -51,7 +55,10 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun setupViews() {
+        // set name
         tvCountryInfoName.text = country.name
+
+        // set flag
         country.alpha2Code?.let {
             ivCountryInfoFlag.setImageResource(
                 context!!.getDrawableId(
@@ -62,27 +69,50 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
                 )
             )
         }
+
+        // set region
         tvCountryInfoRegionValue.text = country.region
+
+        // set population
         tvCountryInfoPopulationValue.text = "%,d".format(country.population)
+
+        // set area
         tvCountryInfoAreaValue.text =
             country.area?.let {
                 "%,d".format(country.area!!.toInt())
             } ?: context!!.getString(R.string.unknown)
+
+        // set capital
         if (country.capital.isNullOrEmpty()) {
             tvCountryInfoCapitalValue.text = context!!.getString(R.string.unknown)
         } else {
             tvCountryInfoCapitalValue.text = country.capital
         }
+
+        // set calling codes
         if (country.callingCodes.isNullOrEmpty()) {
             tvCountryInfoCallingCodesValue.text = context!!.getString(R.string.unknown)
         } else {
             var callingCodes = country.callingCodes.filter { it.isNotBlank() }.joinToString {
                 "+$it"
             }
-            if(callingCodes.isNotEmpty()) {
+            if (callingCodes.isNotEmpty()) {
                 tvCountryInfoCallingCodesValue.text = callingCodes
             } else {
                 tvCountryInfoCallingCodesValue.text = context!!.getString(R.string.unknown)
+            }
+        }
+
+        // set show map button
+        containerCountryInfoShowOnMap.setOnClickListener {
+            val zoomLevel = 6
+            val uri = "geo:${country.latlng[0]},${country.latlng[1]}?z=$zoomLevel"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            try {
+                context?.startActivity(intent)
+            }
+            catch (exception: Exception){
+                Toast.makeText(context, "Please install a map application", Toast.LENGTH_LONG).show()
             }
         }
     }

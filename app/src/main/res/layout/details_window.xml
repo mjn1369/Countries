@@ -161,7 +161,7 @@
             app:layout_constraintLeft_toRightOf="@id/tvCountryInfoAreaLabelDots"
             app:layout_constraintRight_toRightOf="parent"
             style="@style/TextCountryInfoDetails"/>
-    
+
     <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivCountryInfoCapital"
             android:layout_width="@dimen/info_label_icon"
@@ -249,4 +249,35 @@
             app:layout_constraintLeft_toRightOf="@id/tvCountryInfoCallingCodesLabelDots"
             app:layout_constraintRight_toRightOf="parent"
             style="@style/TextCountryInfoDetails"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerCountryInfoShowOnMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ivCountryInfoCallingCodes"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="@dimen/space_2x"
+            android:padding="@dimen/space_2x">
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCountryInfoShowOnMap"
+                android:layout_width="@dimen/info_label_icon"
+                android:layout_height="@dimen/info_label_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvCountryInfoShowOnMap"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="@dimen/space_1x"
+                android:src="@drawable/ic_showmap"/>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCountryInfoShowOnMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/ivCountryInfoShowOnMap"
+                style="@style/TextCountryInfoDetails"
+                android:text="@string/show_on_map"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

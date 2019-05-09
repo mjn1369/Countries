@@ -11,5 +11,6 @@ fun Country.toParcelable() =
         region,
         population,
         area,
-        callingCodes
+        callingCodes,
+        latlng
     )
