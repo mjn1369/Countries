@@ -3,6 +3,7 @@ package apps.mjn.countries.ui.screen.main
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.SimpleItemAnimator
 import apps.mjn.countries.R
 import apps.mjn.countries.ui.base.BaseActivity
 import apps.mjn.countries.ui.model.Resource
@@ -41,8 +42,13 @@ class MainActivity : BaseActivity() {
 
     private fun initViews() {
         countriesAdapter = CountriesAdapter(::onCountryClick)
-        recyclerViewCountries.addItemDecoration(VerticalSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.space_0_5x)))
-        recyclerViewCountries.adapter = countriesAdapter
+        with(recyclerViewCountries) {
+            setHasFixedSize(false)
+            adapter = countriesAdapter
+            addItemDecoration(VerticalSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.space_0_5x)))
+            itemAnimator?.changeDuration = resources.getInteger(R.integer.animation_duration_list).toLong()
+            itemAnimator?.moveDuration = resources.getInteger(R.integer.animation_duration_list).toLong()
+        }
 
         etSearch.afterTextChangeEvents()
             .skipInitialValue()

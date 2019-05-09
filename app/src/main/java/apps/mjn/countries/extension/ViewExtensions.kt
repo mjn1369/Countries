@@ -6,7 +6,7 @@ import apps.mjn.countries.R
 //region View Extensions
 fun View.visible() {
     visibility = View.VISIBLE
-    animate().alpha(1.0F).duration = context.resources.getInteger(R.integer.animation_duration).toLong()
+    animate().alpha(1.0F).duration = context.resources.getInteger(R.integer.animation_duration_visible).toLong()
 }
 
 fun View.gone() {
