@@ -10,7 +10,7 @@ class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(item: Country, onClick: (Country) -> (Unit)) = with(itemView) {
         tvCountryItemName.text = item.name
         tvCountryItemName.isSelected = true
-        tvCountryItemAlpha2Code.text = context.getString(R.string.paranthesis_container,item.alpha2Code)
+        tvCountryItemAlpha2Code.text = context.getString(R.string.parentheses_container,item.alpha2Code)
         tvCountryItemRegion.text = item.region
         setOnClickListener {
             onClick(item)
