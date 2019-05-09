@@ -112,7 +112,7 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
                 context?.startActivity(intent)
             }
             catch (exception: Exception){
-                Toast.makeText(context, "Please install a map application", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context?.getString(R.string.install_map), Toast.LENGTH_LONG).show()
             }
         }
     }
