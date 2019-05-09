@@ -48,5 +48,4 @@ dependencies {
     testImplementation appTestDependencies.mockK
     testImplementation appTestDependencies.archTesting
     androidTestImplementation appTestDependencies.androidxTestRunner
-    androidTestImplementation appTestDependencies.androidxTestEspresso
 }

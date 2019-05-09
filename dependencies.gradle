@@ -47,7 +47,6 @@ ext {
 
     appTestDependencies = [
             androidxTestRunner  : "androidx.test:runner:${androidxTestVersion}",
-            androidxTestEspresso: "androidx.test.espresso:espresso-core:${androidxEspressoVersion}",
             junit               : "junit:junit:${jUnitVersion}",
             mockK               : "io.mockk:mockk:${mockKVersion}",
             archTesting         : "android.arch.core:core-testing:${archTestingVersion}"
