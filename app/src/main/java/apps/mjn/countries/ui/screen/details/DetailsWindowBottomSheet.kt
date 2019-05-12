@@ -37,7 +37,7 @@ class DetailsWindowBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog.window.attributes.windowAnimations = R.style.BottomSheetAnimation
+        dialog.window?.attributes?.windowAnimations = R.style.BottomSheetAnimation
         country = arguments?.getParcelable(ARG_COUNTRY) as ParcelableCountry
         if (country != null) {
             setupViews()

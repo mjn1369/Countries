@@ -47,13 +47,13 @@ class MainActivity : BaseActivity() {
             setHasFixedSize(false)
             adapter = countriesAdapter
             addItemDecoration(VerticalSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.space_0_5x)))
-            itemAnimator?.changeDuration = resources.getInteger(R.integer.animation_duration_list).toLong()
+            itemAnimator?.changeDuration = 0L
             itemAnimator?.moveDuration = resources.getInteger(R.integer.animation_duration_list).toLong()
         }
 
         etSearch.afterTextChangeEvents()
             .skipInitialValue()
-            .debounce(300L, TimeUnit.MILLISECONDS)
+            .debounce(500L, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {

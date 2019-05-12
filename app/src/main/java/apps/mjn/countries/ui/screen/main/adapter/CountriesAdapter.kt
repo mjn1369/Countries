@@ -11,7 +11,7 @@ class CountriesAdapter(
     private val onItemClick: (Country) -> (Unit)
 ) : RecyclerView.Adapter<CountryViewHolder>(), AutoUpdatableAdapter {
 
-    var items: List<Country> by Delegates.observable(emptyList()) { prop, old, new ->
+    var items: List<Country> by Delegates.observable(emptyList()) { _, old, new ->
         autoNotify(old, new) { o, n -> o.name == n.name }
     }
 
