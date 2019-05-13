@@ -1,6 +1,5 @@
 package apps.mjn.countries.ui.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import apps.mjn.countries.ui.base.BaseViewModel
