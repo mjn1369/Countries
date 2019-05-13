@@ -57,22 +57,14 @@ class MainActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                if(it.editable.isNullOrBlank()){
-                    ivClearSearch.gone()
-                } else {
-                    ivClearSearch.visible()
-                }
+                if(it.editable.isNullOrBlank()){ ivClearSearch.gone() } else { ivClearSearch.visible() }
                 viewModel.search(it.editable.toString())
             }
 
-        ivClearSearch.setOnClickListener {
-            etSearch.text = null
-        }
+        ivClearSearch.setOnClickListener { etSearch.text = null }
     }
 
-    private fun onCountryClick(country: Country) {
-        showDetails(country)
-    }
+    private fun onCountryClick(country: Country) { showDetails(country) }
 
     private fun showDetails(country: Country) {
         DetailsWindowBottomSheet.getInstance(country).show(supportFragmentManager, "")
@@ -86,15 +78,9 @@ class MainActivity : BaseActivity() {
     private fun listenToViewModelData(resource: Resource<List<Country>>?) {
         resource?.let {
             when (resource.resourceState) {
-                ResourceState.LOADING -> {
-                    loading()
-                }
-                ResourceState.SUCCESS -> {
-                    success(resource.data)
-                }
-                ResourceState.ERROR -> {
-                    error(resource.throwable?.message)
-                }
+                ResourceState.LOADING -> { loading() }
+                ResourceState.SUCCESS -> { success(resource.data) }
+                ResourceState.ERROR -> { error(resource.throwable?.message) }
             }
         }
     }
@@ -111,9 +97,7 @@ class MainActivity : BaseActivity() {
     private fun error(message: String?) {
         clearScreen()
         disableSearch()
-        setMessage(
-            message ?: getString(R.string.countries_error), getString(R.string.try_again)
-        ) {
+        setMessage(message ?: getString(R.string.countries_error), getString(R.string.try_again)) {
             loading()
             viewModel.load()
         }
@@ -156,7 +140,7 @@ class MainActivity : BaseActivity() {
                 setMessage(getString(R.string.countries_empty), null) {}
             } else {
                 showList()
-                countriesAdapter.items = sortCountries(data, getCountryNameComparator(SortType.ASC))
+                countriesAdapter.items = data
             }
         } ?: error(getString(R.string.countries_error))
     }
@@ -173,10 +157,5 @@ class MainActivity : BaseActivity() {
         hideLoading()
         hideMessage()
         hideList()
-    }
-
-    private fun sortCountries(list: List<Country>, comparator: Comparator<Country>): List<Country> {
-        Collections.sort(list, comparator)
-        return list.sortedWith(nullsLast(comparator))
     }
 }
