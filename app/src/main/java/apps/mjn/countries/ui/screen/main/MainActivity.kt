@@ -62,7 +62,7 @@ class MainActivity : BaseActivity() {
                 } else {
                     ivClearSearch.visible()
                 }
-                success(viewModel.search(it.editable.toString()))
+                viewModel.search(it.editable.toString())
             }
 
         ivClearSearch.setOnClickListener {
