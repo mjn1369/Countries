@@ -31,7 +31,7 @@ class GetCountriesViewModel @Inject constructor(private val getCountriesUseCase:
         }
     }
 
-    fun getData(): LiveData<Resource<List<Country>>> = data
+    fun getData() = data
 
     fun load() {
         data.value = Resource(ResourceState.LOADING)

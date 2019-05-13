@@ -96,8 +96,10 @@ class GetCountriesViewModelTest {
             success.invoke(list)
         }
 
+        viewModel.getData().observeForever {}
         viewModel.load()
         val query = "a"
-        assert(viewModel.search(query).all { it.name.contains(query) })
+        viewModel.search(query)
+        assert(viewModel.getData().value!!.data!!.all { it.name.contains(query) })
     }
 }
